@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LCFlowImageView : UIImageView
 
+-(void)startFlowAnimating;
+
 @end
 
 NS_ASSUME_NONNULL_END

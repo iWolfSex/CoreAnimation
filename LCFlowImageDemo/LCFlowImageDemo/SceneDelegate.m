@@ -24,7 +24,7 @@
     UIWindowScene *windowScene = (UIWindowScene *)scene;
     self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
     self.window.frame = windowScene.coordinateSpace.bounds;
-    ViewController * flowImageViewController = [[ViewController alloc] init];
+    LCFlowImageViewController * flowImageViewController = [[LCFlowImageViewController alloc] init];
     self.window.rootViewController = flowImageViewController;
     [self.window makeKeyAndVisible];
     
