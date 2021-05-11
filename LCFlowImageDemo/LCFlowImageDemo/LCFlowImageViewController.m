@@ -27,6 +27,10 @@
     self.flowImageView = self.imageView ;
     [self.view addSubview:self.imageView ];
     [self.view addSubview:self.startAnimationButton];
+    
+    
+    
+    
 }
 
 -(UIButton *)startAnimationButton{

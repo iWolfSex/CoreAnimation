@@ -18,6 +18,8 @@
 @property (nonatomic,strong)UIBezierPath * flowPath;
 @property (nonatomic,strong)NSMutableArray * flowArray;
 
+@property (nonatomic, assign) CGFloat arrowAngle;
+@property (nonatomic, assign) CGFloat arrowLength;
 
 @end
 
@@ -25,6 +27,9 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        
+        _arrowAngle = M_PI/8;
+        _arrowLength = 8;
         
         self.userInteractionEnabled = YES;
         self.pointArray = [[NSMutableArray alloc] init];
@@ -55,6 +60,7 @@
     }else if(recognizer.state == UIGestureRecognizerStateEnded){
         self.endPoint = point;
     }
+    
     [self drawflowLayerWithStartPoint:self.startPoint WithEndPoint:self.endPoint];
     if(recognizer.state == UIGestureRecognizerStateEnded){
         _flowLayer = nil;
@@ -63,9 +69,12 @@
 }
 
 
-- (void)drawRect:(CGRect)rect {
-    
 
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing cod
 }
 
 -(void)startFlowAnimating{
@@ -98,19 +107,48 @@
     if (_flowLayer) {
         [_flowLayer removeFromSuperlayer];
     }
+    UIBezierPath * flowPath = [UIBezierPath bezierPath]; // 创建路径
+    flowPath.lineWidth = 50;
+    [flowPath moveToPoint:CGPointMake(startPoint.x,startPoint.y)];
+    [flowPath addLineToPoint:CGPointMake(endPoint.x, endPoint.y)];
+    CAShapeLayer * flowLayer = [CAShapeLayer layer];
+    flowLayer.lineWidth = 50;
+    flowLayer.strokeColor = [UIColor redColor].CGColor;
+    flowLayer.fillColor = [UIColor redColor].CGColor;; // 默认为blackColor
+    flowLayer.path = flowPath.CGPath;
+    _flowLayer = flowLayer;
+    [self.flowArray addObject:flowLayer];
+    [self.layer addSublayer:flowLayer];
     
-    UIBezierPath *path = [UIBezierPath bezierPath]; // 创建路径
-    path.lineWidth = 2;
-    [path moveToPoint:CGPointMake(startPoint.x,startPoint.y)];
-    [path addLineToPoint:CGPointMake(endPoint.x, endPoint.y)];
     
-    _flowLayer = [CAShapeLayer layer];
-    _flowLayer.lineWidth = 2;
-    _flowLayer.strokeColor = [UIColor redColor].CGColor;
-    _flowLayer.fillColor = [UIColor redColor].CGColor;; // 默认为blackColor
-    _flowLayer.path = path.CGPath;
-    [self.layer addSublayer:_flowLayer];
+    UIBezierPath * linePath = [UIBezierPath bezierPath]; // 创建路径
+    linePath.lineWidth = 2;
+    [linePath moveToPoint:CGPointMake(startPoint.x,startPoint.y)];
+    [linePath addLineToPoint:CGPointMake(endPoint.x, endPoint.y)];
+    CAShapeLayer * lineLayer = [CAShapeLayer layer];
+    lineLayer.lineWidth = 2;
+    lineLayer.strokeColor = [UIColor greenColor].CGColor;
+    lineLayer.fillColor = [UIColor greenColor].CGColor;; // 默认为blackColor
+    lineLayer.path = linePath.CGPath;
+    [flowLayer addSublayer:lineLayer];
     
+    self.layer.mask =  flowLayer;
+    
+    
+    CAShapeLayer *layer = [CAShapeLayer new];
+    layer.lineWidth = 5;
+    //圆环的颜色
+    layer.strokeColor = [UIColor greenColor].CGColor;
+    //背景填充色
+    layer.fillColor = [UIColor greenColor].CGColor;
+    //设置半径为10
+    CGFloat radius = 5;
+    //按照顺时针方向
+    BOOL clockWise = true;
+    //初始化一个路径
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(startPoint.x,startPoint.y) radius:radius startAngle:0 endAngle:M_PI * 2 clockwise:clockWise];
+    layer.path = [path CGPath];
+    [flowLayer addSublayer:layer];
     
     
 }
