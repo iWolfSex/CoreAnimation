@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2709B43A264A8949001409A5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2709B439264A8949001409A5 /* AVFoundation.framework */; };
+		27972A2F264BB25200ADF805 /* LCFlowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27972A2B264BB25200ADF805 /* LCFlowImageView.m */; };
 		333B9FCE1FB2F8D000D1A4E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 333B9FCD1FB2F8D000D1A4E7 /* AppDelegate.m */; };
 		333B9FD11FB2F8D000D1A4E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333B9FD01FB2F8D000D1A4E7 /* ViewController.m */; };
 		333B9FD41FB2F8D000D1A4E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333B9FD21FB2F8D000D1A4E7 /* Main.storyboard */; };
@@ -23,6 +24,9 @@
 
 /* Begin PBXFileReference section */
 		2709B439264A8949001409A5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		27972A03264B8FFB00ADF805 /* ScreenMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScreenMacro.h; path = ../../LCFlowImageDemo/LCFlowImageDemo/ScreenMacro.h; sourceTree = "<group>"; };
+		27972A2B264BB25200ADF805 /* LCFlowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCFlowImageView.m; sourceTree = "<group>"; };
+		27972A2E264BB25200ADF805 /* LCFlowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCFlowImageView.h; sourceTree = "<group>"; };
 		333B9FC91FB2F8D000D1A4E7 /* DrawLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333B9FCC1FB2F8D000D1A4E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		333B9FCD1FB2F8D000D1A4E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 				333B9FCD1FB2F8D000D1A4E7 /* AppDelegate.m */,
 				333B9FCF1FB2F8D000D1A4E7 /* ViewController.h */,
 				333B9FD01FB2F8D000D1A4E7 /* ViewController.m */,
+				27972A03264B8FFB00ADF805 /* ScreenMacro.h */,
 				333B9FD21FB2F8D000D1A4E7 /* Main.storyboard */,
 				333B9FD51FB2F8D000D1A4E7 /* Assets.xcassets */,
 				333B9FD71FB2F8D000D1A4E7 /* LaunchScreen.storyboard */,
@@ -104,6 +109,8 @@
 		333B9FE91FB3E4CE00D1A4E7 /* drawline */ = {
 			isa = PBXGroup;
 			children = (
+				27972A2E264BB25200ADF805 /* LCFlowImageView.h */,
+				27972A2B264BB25200ADF805 /* LCFlowImageView.m */,
 				333B9FF41FB3E97100D1A4E7 /* YYKArcDrawLineView.h */,
 				333B9FF51FB3E97100D1A4E7 /* YYKArcDrawLineView.m */,
 				333B9FF81FB3ECFB00D1A4E7 /* YYKDrawLineViewController.h */,
@@ -198,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				333B9FFB1FB3ECFB00D1A4E7 /* YYKDrawLineViewController.m in Sources */,
+				27972A2F264BB25200ADF805 /* LCFlowImageView.m in Sources */,
 				333B9FD11FB2F8D000D1A4E7 /* ViewController.m in Sources */,
 				333B9FDC1FB2F8D000D1A4E7 /* main.m in Sources */,
 				333B9FCE1FB2F8D000D1A4E7 /* AppDelegate.m in Sources */,

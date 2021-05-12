@@ -8,6 +8,8 @@
 
 #import "YYKDrawLineViewController.h"
 #import "YYKArcDrawLineView.h"
+#import "LCFlowImageView.h"
+#import "ScreenMacro.h"
 @interface YYKDrawLineViewController (){
     CGPoint startPoint;
     CGPoint endPoint;
@@ -15,6 +17,18 @@
 @property (nonatomic, strong)YYKArcDrawLineView *currentLineView;
 @property (nonatomic, strong) NSMutableArray *redoList;
 @property (nonatomic, strong) NSMutableArray *undoList;
+
+@property (nonatomic, strong) NSMutableArray *reflowList;
+@property (nonatomic, strong) NSMutableArray *unflowList;
+
+
+
+@property (nonatomic, strong) LCFlowImageView * flowImageView;
+@property (nonatomic, strong)  UIPanGestureRecognizer *pan;
+
+@property (nonatomic,assign)CGPoint startPoint;
+@property (nonatomic,assign)CGPoint endPoint;
+
 @end
 
 @implementation YYKDrawLineViewController
@@ -29,16 +43,16 @@
     self.showLineImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.showLineImageView.clipsToBounds = YES;
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePaintPan:)];
-    [self.showLineImageView addGestureRecognizer:pan];
+    _pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePaintPan:)];
+    [self.showLineImageView addGestureRecognizer:_pan];
 }
 
 
 -(UIImageView *)showLineImageView{
     if (_showLineImageView == nil) {
-        CGFloat width = self.view.frame.size.width;
+        CGFloat width = WinSize_Width;
         CGFloat height = (width /4)*3;
-        _showLineImageView = [[UIImageView alloc] initWithFrame:CGRectMake( (self.view.frame.size.width - width)/2 , (self.view.frame.size.height - height)/2, width, height)];
+        _showLineImageView = [[UIImageView alloc] initWithFrame:CGRectMake( (WinSize_Width - width)/2 , (WinSize_Height - height)/2, width, height)];
     }
     return _showLineImageView;
 }
@@ -57,6 +71,20 @@
     return _undoList;
 }
 
+-(NSMutableArray *)unflowList{
+    if (!_unflowList) {
+        _unflowList = [NSMutableArray array];
+    }
+    return _unflowList;
+}
+
+-(NSMutableArray *)reflowList{
+    if (!_reflowList) {
+        _reflowList = [NSMutableArray array];
+    }
+    return _reflowList;
+}
+
 //撤销
 -(IBAction)redo:(id)sender{
     YYKArcDrawLineView *viewnext = self.redoList.lastObject;
@@ -64,6 +92,16 @@
     [self.undoList addObject:viewnext];
     [self.redoList removeLastObject];
     [viewnext removeFromSuperview];
+    
+    
+    LCFlowImageView * flowImageView = self.reflowList.lastObject;
+    if(!flowImageView)return;
+    [self.unflowList addObject:flowImageView];
+    [self.reflowList removeLastObject];
+    [flowImageView removeFromSuperview];
+    
+    
+    
 }
 //恢复
 -(IBAction)undo:(id)sender{
@@ -72,22 +110,61 @@
     [self.undoList removeLastObject];
     [self.redoList addObject:viewnext];
     [self.showLineImageView addSubview:viewnext];
+    
+    LCFlowImageView *flowImageView = self.unflowList.lastObject;
+    if(!flowImageView)return;
+    [self.unflowList removeLastObject];
+    [self.reflowList addObject:viewnext];
+    [self.showLineImageView addSubview:viewnext];
+    
+}
+- (IBAction)startAnimation:(id)sender {
+    if ([self.reflowList count] <= 0) {
+        return;
+    }
+    
+    for (int i = 0; i< [self.reflowList count]; i++) {
+        LCFlowImageView *flowImageView = [self.reflowList objectAtIndex:i];
+        [flowImageView splitRect];
+        
+    }
+    
+    
 }
 
 
 //画线
 - (void)handlePaintPan:(UIPanGestureRecognizer *)gesture{
+    
+    CGPoint point = [gesture locationInView:gesture.view];
+    NSLog(@"%f----%f",point.x,point.y);
     switch (gesture.state){
         case UIGestureRecognizerStateBegan:{
+            if (!_flowImageView) {
+                CGFloat width = WinSize_Width;
+                CGFloat height = (width /4)*3;
+                _flowImageView = [[LCFlowImageView alloc] initWithFrame:CGRectMake( 0 , 0, width, height)];
+                _flowImageView.image = self.showImage;
+                _flowImageView.userInteractionEnabled = YES;
+                _flowImageView.contentMode = UIViewContentModeScaleAspectFill;
+                _flowImageView.clipsToBounds = YES;
+                [gesture.view addSubview:_flowImageView];
+                
+            }
+            
             if(!_currentLineView){
                 CGPoint touchPoint = [gesture locationInView:gesture.view];
                 startPoint = touchPoint;
-                _currentLineView = [[YYKArcDrawLineView alloc] initWithFrame:CGRectMake(touchPoint.x, touchPoint.y, 0, 0) withFlowImageSize:self.showLineImageView.frame.size withImage:self.showImage withImageView:self.showLineImageView];
+                _currentLineView = [[YYKArcDrawLineView alloc] initWithFrame:CGRectMake(touchPoint.x, touchPoint.y, 0, 0)];
                 [_currentLineView setTitle:@"title"];
                 [_currentLineView setchangeLineColor:[UIColor redColor]];
                 [gesture.view addSubview:_currentLineView];
                 [_currentLineView addMagnifyingGlassAtPoint:[gesture locationInView:_currentLineView]];
+                
             }
+            self.startPoint = point;
+            self.endPoint = point;
+            
         }
             break;
     
@@ -101,6 +178,11 @@
             
             [_currentLineView scaleWithTranslation:translation andTouchPoint:changPoint];
             [_currentLineView updateMagnifyingGlassAtPoint:[gesture locationInView:_currentLineView]];
+            
+            self.endPoint = point;
+            [_flowImageView drawflowLayerWithStartPoint:self.startPoint WithEndPoint:self.endPoint];
+            
+            
             break;
         }
         case UIGestureRecognizerStateEnded:{
@@ -108,12 +190,20 @@
             [self.undoManager registerUndoWithTarget:_currentLineView selector:@selector(removeFromSuperview) object:nil];
             [_currentLineView removeMagnifyingGlass];
             [self.redoList addObject:_currentLineView];
+            self.endPoint = point;
             _currentLineView = nil;
+            
+            [self.reflowList addObject:_flowImageView];
+            _flowImageView = nil;
+            
+            
             break;
         }
         case UIGestureRecognizerStateCancelled: {
             [_currentLineView removeMagnifyingGlass];
             _currentLineView = nil;
+            
+            _flowImageView = nil;
             break;
         }
             
@@ -121,6 +211,7 @@
             break;
     }
 }
+
 
 
 -(CGRect)getFrameSizeForImage:(UIImage *)image inImageView:(UIImageView *)imageView {

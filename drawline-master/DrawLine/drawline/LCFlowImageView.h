@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)drawflowLayerWithStartPoint:(CGPoint)startPoint WithEndPoint:(CGPoint)endPoint;
 
+-(void)splitRect;
+
 @end
 
 NS_ASSUME_NONNULL_END

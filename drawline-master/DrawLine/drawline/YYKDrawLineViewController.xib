@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01s-Tx-ZqT">
-                    <rect key="frame" x="0.0" y="577" width="187.5" height="30"/>
+                    <rect key="frame" x="0.0" y="557" width="187.5" height="30"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="撤销">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -28,7 +28,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wH8-8q-qJz">
-                    <rect key="frame" x="187.5" y="577" width="187.5" height="30"/>
+                    <rect key="frame" x="187.5" y="557" width="187.5" height="30"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="恢复">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,15 +37,29 @@
                         <action selector="undo:" destination="-1" eventType="touchUpInside" id="reV-bI-Y1T"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjq-AQ-Ac6">
+                    <rect key="frame" x="0.0" y="602" width="375" height="30"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="开始动画">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="startAnimation:" destination="-1" eventType="touchUpInside" id="mK1-XH-99u"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Tjq-AQ-Ac6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9Ua-lC-gdf"/>
                 <constraint firstItem="01s-Tx-ZqT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ibb-7Z-Jvk"/>
                 <constraint firstAttribute="trailing" secondItem="wH8-8q-qJz" secondAttribute="trailing" id="Jmn-oP-txF"/>
-                <constraint firstAttribute="bottom" secondItem="wH8-8q-qJz" secondAttribute="bottom" constant="60" id="KkR-yi-AMH"/>
-                <constraint firstAttribute="bottom" secondItem="01s-Tx-ZqT" secondAttribute="bottom" constant="60" id="Q0r-7k-Ayo"/>
+                <constraint firstAttribute="bottom" secondItem="wH8-8q-qJz" secondAttribute="bottom" constant="80" id="KkR-yi-AMH"/>
+                <constraint firstItem="Tjq-AQ-Ac6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="P29-HY-itB"/>
+                <constraint firstAttribute="bottom" secondItem="01s-Tx-ZqT" secondAttribute="bottom" constant="80" id="Q0r-7k-Ayo"/>
+                <constraint firstItem="Tjq-AQ-Ac6" firstAttribute="top" secondItem="01s-Tx-ZqT" secondAttribute="bottom" constant="15" id="aKM-B2-D4G"/>
                 <constraint firstItem="wH8-8q-qJz" firstAttribute="height" secondItem="01s-Tx-ZqT" secondAttribute="height" id="i5R-JM-jto"/>
                 <constraint firstItem="wH8-8q-qJz" firstAttribute="width" secondItem="01s-Tx-ZqT" secondAttribute="width" id="u3J-au-Sz3"/>
+                <constraint firstAttribute="trailing" secondItem="Tjq-AQ-Ac6" secondAttribute="trailing" id="vyI-nC-bRY"/>
                 <constraint firstItem="wH8-8q-qJz" firstAttribute="leading" secondItem="01s-Tx-ZqT" secondAttribute="trailing" id="zNg-6p-2Yp"/>
             </constraints>
             <point key="canvasLocation" x="34.399999999999999" y="52.623688155922046"/>

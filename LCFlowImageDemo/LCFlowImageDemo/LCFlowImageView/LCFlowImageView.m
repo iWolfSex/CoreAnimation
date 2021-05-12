@@ -6,6 +6,8 @@
 //
 
 #import "LCFlowImageView.h"
+#import "LCReplicatorImageView.h"
+
 
 @interface LCFlowImageView()
 
@@ -20,6 +22,8 @@
 
 @property (nonatomic, assign) CGFloat arrowAngle;
 @property (nonatomic, assign) CGFloat arrowLength;
+@property (nonatomic, strong) LCReplicatorImageView * replicatorImageView;
+
 
 @end
 
@@ -30,13 +34,15 @@
         
         _arrowAngle = M_PI/8;
         _arrowLength = 8;
-        
         self.userInteractionEnabled = YES;
         self.pointArray = [[NSMutableArray alloc] init];
         UILongPressGestureRecognizer *touch = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         [self addGestureRecognizer:touch];
-        
+
+
         self.flowArray = [[NSMutableArray alloc] init];
+       
+        
         
         
         
@@ -107,6 +113,7 @@
     if (_flowLayer) {
         [_flowLayer removeFromSuperlayer];
     }
+    
     UIBezierPath * flowPath = [UIBezierPath bezierPath]; // 创建路径
     flowPath.lineWidth = 50;
     [flowPath moveToPoint:CGPointMake(startPoint.x,startPoint.y)];
@@ -116,9 +123,16 @@
     flowLayer.strokeColor = [UIColor redColor].CGColor;
     flowLayer.fillColor = [UIColor redColor].CGColor;; // 默认为blackColor
     flowLayer.path = flowPath.CGPath;
+    
     _flowLayer = flowLayer;
+    [self.layer addSublayer:_flowLayer];
     [self.flowArray addObject:flowLayer];
-    [self.layer addSublayer:flowLayer];
+    
+    
+    [self addSubview:self.replicatorImageView];
+    self.replicatorImageView.layer.mask = flowLayer;
+    
+    
     
     
     UIBezierPath * linePath = [UIBezierPath bezierPath]; // 创建路径
@@ -130,10 +144,7 @@
     lineLayer.strokeColor = [UIColor greenColor].CGColor;
     lineLayer.fillColor = [UIColor greenColor].CGColor;; // 默认为blackColor
     lineLayer.path = linePath.CGPath;
-    [flowLayer addSublayer:lineLayer];
-    
-    self.layer.mask =  flowLayer;
-    
+    [self.layer addSublayer:lineLayer];
     
     CAShapeLayer *layer = [CAShapeLayer new];
     layer.lineWidth = 5;
@@ -148,10 +159,46 @@
     //初始化一个路径
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(startPoint.x,startPoint.y) radius:radius startAngle:0 endAngle:M_PI * 2 clockwise:clockWise];
     layer.path = [path CGPath];
-    [flowLayer addSublayer:layer];
+    [self.layer addSublayer:layer];
     
     
 }
+
+// 因为所有的视图类都是继承BaseView
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+//    NSLog(@"%@--hitTest",[self class]);
+//    return [super hitTest:point withEvent:event];
+    
+    
+    // 1.判断当前控件能否接收事件
+    if (self.userInteractionEnabled == NO || self.hidden == YES || self.alpha <= 0.01) return nil;
+    
+    // 2. 判断点在不在当前控件
+    if ([self pointInside:point withEvent:event] == NO) return nil;
+    
+    // 3.从后往前遍历自己的子控件
+    NSInteger count = self.subviews.count;
+    
+    for (NSInteger i = count - 1; i >= 0; i--) {
+        UIView *childView = self.subviews[i];
+
+        // 把当前控件上的坐标系转换成子控件上的坐标系
+        CGPoint childP = [self convertPoint:point toView:childView];
+
+        UIView *fitView = [childView hitTest:childP withEvent:event];
+
+
+        if (fitView) { // 寻找到最合适的view
+            return [fitView superview];
+        }
+    }
+    
+    // 循环结束,表示没有比自己更合适的view
+    return self;
+    
+}
+
 
 -(void)drawLineForPoints:(NSMutableArray*)points{
     UIBezierPath *path = [UIBezierPath bezierPath]; // 创建路径
@@ -187,6 +234,20 @@
         _lineLayer.fillColor = [UIColor redColor].CGColor;; // 默认为blackColor
     }
     return _lineLayer;
+}
+
+-(LCReplicatorImageView *)replicatorImageView{
+    if (_replicatorImageView == nil) {
+        UIGraphicsBeginImageContext(self.frame.size);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [self.layer renderInContext:context];
+        UIImage *screenShot = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        _replicatorImageView = [[LCReplicatorImageView alloc] initWithImage:screenShot];
+        _replicatorImageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        _replicatorImageView.userInteractionEnabled = YES;
+    }
+    return _replicatorImageView;
 }
 
 

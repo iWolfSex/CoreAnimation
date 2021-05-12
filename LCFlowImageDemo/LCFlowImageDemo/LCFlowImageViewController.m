@@ -44,7 +44,6 @@
 }
 
 -(void)startAnimationButtonClicked{
-    [self.imageView startFlowAnimating];
 }
 
 

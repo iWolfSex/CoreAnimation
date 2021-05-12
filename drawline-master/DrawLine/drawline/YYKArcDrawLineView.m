@@ -38,13 +38,14 @@
 @property (nonatomic, strong) YYKMagnifyingGlass *magnifyingGlass;
 @property (nonatomic, assign) CGFloat magnifyingGlassShowDelay;
 
+
 @end
 
 
 @implementation YYKArcDrawLineView
 
 @synthesize title = _title;
-- (id)initWithFrame:(CGRect)frame withFlowImageSize:(CGSize)flowImageSize withImage:(UIImage*)image withImageView:(UIImageView*)showImageView{
+- (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self) {
         _lineAlpha = 1.0f;
@@ -56,8 +57,6 @@
         _startPoint = CGPointZero;
         _endPoint = CGPointZero;
         _editRadius = 35;
-        _flowImageSize = flowImageSize;
-        _flowImage = image;
         
         self.userInteractionEnabled = YES;
         
@@ -98,29 +97,14 @@
         YYKLoupe *loupe = [[YYKLoupe alloc] init];
         self.magnifyingGlass = loupe;
         
-//        [self addSubview:self.showImageView];
-//        self.showImageView.image = image;
-//        self.showImageView.userInteractionEnabled = YES;
-//        self.showImageView.contentMode = UIViewContentModeScaleAspectFill;
-//        self.showImageView.clipsToBounds = YES;
         
-        CAShapeLayer *flowLayer = [CAShapeLayer layer];
-        self.flowLayer = flowLayer;
-        [self.layer addSublayer:self.flowLayer];
+     
         
         
        
         
     }
     return self;
-}
-
-
--(UIImageView *)showImageView{
-    if (_showImageView == nil) {
-        _showImageView = [[UIImageView alloc] initWithFrame:CGRectMake( 0 , 0, _flowImageSize.width, _flowImageSize.height)];
-    }
-    return _showImageView;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -351,16 +335,6 @@
     CGContextSetFillColorWithColor(context, _lineColor.CGColor);
     CGContextDrawPath(context, kCGPathFillStroke);
     
-    
-    UIBezierPath * flowPath = [UIBezierPath bezierPath]; // 创建路径
-    flowPath.lineWidth = 50;
-    [flowPath moveToPoint:CGPointMake(_startPoint.x,_startPoint.y)];
-    [flowPath addLineToPoint:CGPointMake(_endPoint.x, _endPoint.y)];
-    self.flowLayer.lineWidth = 50;
-    self.flowLayer.strokeColor = [UIColor clearColor].CGColor;
-    self.flowLayer.fillColor = [UIColor clearColor].CGColor;; // 默认为blackColor
-    self.flowLayer.path = flowPath.CGPath;
-//    self.showImageView.layer.mask =  self.flowLayer;
     
     CAShapeLayer * roundLayer = [CAShapeLayer new];
     roundLayer.lineWidth = 5;
@@ -671,65 +645,8 @@
     //string转color
     UIColor *wordColor = [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1.0];
     return wordColor;
-    
 }
 
 
-
--(UIImage*)clipImageWithImage:(UIImage*)image withBezierPath:(UIBezierPath*)path{
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef    context    = CGBitmapContextCreate(nil, 0, 0, image.size.width, image.size.height, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
-    CGContextAddPath(context, path.CGPath);
-    CGContextClip(context);
-    CGContextDrawImage(context, CGRectMake(0, 0, image.size.width,  image.size.height), image.CGImage);
-    UIImage * newImage = [UIImage imageWithCGImage:CGBitmapContextCreateImage(context)];
-    return newImage;
-    
-}
-
-- (UIImage *)maskImage:(UIImage *)originalImage toPath:(UIBezierPath *)path {
-    UIGraphicsBeginImageContextWithOptions(originalImage.size, NO, 0);
-    [path addClip];
-    [originalImage drawAtPoint:CGPointZero];
-    UIImage *maskedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return maskedImage;
-}
-
-
-
--(UIImage *)computeCropRect:(CGRect)sourceFrame withImage:(UIImage*)image{
-    
-    CGRect rect = AVMakeRectWithAspectRatioInsideRect(image.size, CGRectMake(0, 0, sourceFrame.size.width, sourceFrame.size.height));
-    UIImage * computeImage = [self imageFromImage:image inRect:rect];
-    return computeImage;
-}
-
-
-
-//按像素大小裁剪
-- (UIImage *)croppedImageWithPixelRect:(CGRect)bounds {
-    
-    CGImageRef imageRef = CGImageCreateWithImageInRect([self.flowImage CGImage], bounds);
-    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    return croppedImage;
-}
-//裁剪方法
-- (UIImage *)imageFromImage:(UIImage *)image inRect:(CGRect)rect{
-     
-   //将UIImage转换成CGImageRef
-   CGImageRef sourceImageRef = [image CGImage];
-     
-   //按照给定的矩形区域进行剪裁
-   CGImageRef newImageRef = CGImageCreateWithImageInRect(sourceImageRef, rect);
-     
-   //将CGImageRef转换成UIImage
-   UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-     
-   //返回剪裁后的图片
-   return newImage;
-}
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2796CABC2643996E00C53120 /* LCFlowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2796CABB2643996E00C53120 /* LCFlowImageViewController.m */; };
 		2796CAC326439D9400C53120 /* LCFlowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2796CAC226439D9400C53120 /* LCFlowImageView.m */; };
+		279729FF264B85B500ADF805 /* LCReplicatorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 279729FE264B85B500ADF805 /* LCReplicatorImageView.m */; };
 		279E557A263A9BD600566C99 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E5579263A9BD600566C99 /* AppDelegate.m */; };
 		279E557D263A9BD600566C99 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E557C263A9BD600566C99 /* SceneDelegate.m */; };
 		279E5580263A9BD600566C99 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E557F263A9BD600566C99 /* ViewController.m */; };
@@ -42,6 +43,9 @@
 		2796CABB2643996E00C53120 /* LCFlowImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCFlowImageViewController.m; sourceTree = "<group>"; };
 		2796CAC126439D9400C53120 /* LCFlowImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCFlowImageView.h; sourceTree = "<group>"; };
 		2796CAC226439D9400C53120 /* LCFlowImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCFlowImageView.m; sourceTree = "<group>"; };
+		279729F9264B7FED00ADF805 /* ScreenMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenMacro.h; sourceTree = "<group>"; };
+		279729FD264B85B500ADF805 /* LCReplicatorImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCReplicatorImageView.h; sourceTree = "<group>"; };
+		279729FE264B85B500ADF805 /* LCReplicatorImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCReplicatorImageView.m; sourceTree = "<group>"; };
 		279E5575263A9BD600566C99 /* LCFlowImageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCFlowImageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279E5578263A9BD600566C99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		279E5579263A9BD600566C99 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 			children = (
 				2796CAC126439D9400C53120 /* LCFlowImageView.h */,
 				2796CAC226439D9400C53120 /* LCFlowImageView.m */,
+				279729FD264B85B500ADF805 /* LCReplicatorImageView.h */,
+				279729FE264B85B500ADF805 /* LCReplicatorImageView.m */,
 			);
 			path = LCFlowImageView;
 			sourceTree = "<group>";
@@ -122,6 +128,7 @@
 				2796CAC026439D7700C53120 /* LCFlowImageView */,
 				279E5578263A9BD600566C99 /* AppDelegate.h */,
 				279E5579263A9BD600566C99 /* AppDelegate.m */,
+				279729F9264B7FED00ADF805 /* ScreenMacro.h */,
 				279E557B263A9BD600566C99 /* SceneDelegate.h */,
 				279E557C263A9BD600566C99 /* SceneDelegate.m */,
 				279E557E263A9BD600566C99 /* ViewController.h */,
@@ -290,6 +297,7 @@
 				279E557A263A9BD600566C99 /* AppDelegate.m in Sources */,
 				279E558B263A9BD700566C99 /* main.m in Sources */,
 				279E557D263A9BD600566C99 /* SceneDelegate.m in Sources */,
+				279729FF264B85B500ADF805 /* LCReplicatorImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

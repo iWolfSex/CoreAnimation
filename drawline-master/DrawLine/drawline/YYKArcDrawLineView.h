@@ -26,13 +26,6 @@ typedef NS_ENUM(NSUInteger, YYKEditLineStatusType)
 @property (nonatomic, assign) CGFloat currentRoate_Angle;
 @property (nonatomic, assign) YYKEditLineStatusType editLineStatusType;
 
-@property (nonatomic,strong)UIImageView * showImageView;
-
-@property (nonatomic,strong) CAShapeLayer * flowLayer;
-@property (nonatomic,strong)UIImage * flowImage;
-@property (nonatomic,assign)CGSize flowImageSize;
-
-
 
 
 
@@ -42,7 +35,7 @@ typedef NS_ENUM(NSUInteger, YYKEditLineStatusType)
 // update
 @property (nonatomic, assign) CGPoint translation;
 
-- (id)initWithFrame:(CGRect)frame withFlowImageSize:(CGSize)flowImageSize withImage:(UIImage*)image withImageView:(UIImageView*)showImageView;
+- (id)initWithFrame:(CGRect)frame;
 
 - (void)scaleWithTranslation:(CGPoint)translation andTouchPoint:(CGPoint)touchPoint;
 -(void)setAnchorPoint:(CGPoint)anchorPoint;
