@@ -18,6 +18,16 @@
 		276DDD45264685D70003ED67 /* LCFlowImageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 276DDD44264685D70003ED67 /* LCFlowImageUITests.m */; };
 		276DDD57264686010003ED67 /* LCFlowImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 276DDD56264686010003ED67 /* LCFlowImage.m */; };
 		276DDD7726469B550003ED67 /* WechatIMG13.png in Resources */ = {isa = PBXBuildFile; fileRef = 276DDD7626469B550003ED67 /* WechatIMG13.png */; };
+		27972A3B264CC54A00ADF805 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A3A264CC54A00ADF805 /* libc++.tbd */; };
+		27972A40264CC55900ADF805 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A3F264CC55900ADF805 /* AVFoundation.framework */; };
+		27972A42264CC56E00ADF805 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A41264CC56E00ADF805 /* CoreImage.framework */; };
+		27972A44264CC57800ADF805 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A43264CC57800ADF805 /* CoreGraphics.framework */; };
+		27972A46264CC58200ADF805 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A45264CC58200ADF805 /* QuartzCore.framework */; };
+		27972A48264CC58E00ADF805 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A47264CC58E00ADF805 /* Accelerate.framework */; };
+		27972A4A264CC59600ADF805 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A49264CC59600ADF805 /* CoreVideo.framework */; };
+		27972A4C264CC5A300ADF805 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A4B264CC5A300ADF805 /* CoreMedia.framework */; };
+		27972A4E264CC5B100ADF805 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A4D264CC5B100ADF805 /* AssetsLibrary.framework */; };
+		27972A50264CC5BE00ADF805 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A4F264CC5BD00ADF805 /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +69,16 @@
 		276DDD55264686010003ED67 /* LCFlowImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCFlowImage.h; sourceTree = "<group>"; };
 		276DDD56264686010003ED67 /* LCFlowImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCFlowImage.m; sourceTree = "<group>"; };
 		276DDD7626469B550003ED67 /* WechatIMG13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WechatIMG13.png; sourceTree = "<group>"; };
+		27972A3A264CC54A00ADF805 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		27972A3F264CC55900ADF805 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		27972A41264CC56E00ADF805 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		27972A43264CC57800ADF805 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		27972A45264CC58200ADF805 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		27972A47264CC58E00ADF805 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		27972A49264CC59600ADF805 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		27972A4B264CC5A300ADF805 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		27972A4D264CC5B100ADF805 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		27972A4F264CC5BD00ADF805 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +86,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27972A4E264CC5B100ADF805 /* AssetsLibrary.framework in Frameworks */,
+				27972A4C264CC5A300ADF805 /* CoreMedia.framework in Frameworks */,
+				27972A4A264CC59600ADF805 /* CoreVideo.framework in Frameworks */,
+				27972A48264CC58E00ADF805 /* Accelerate.framework in Frameworks */,
+				27972A46264CC58200ADF805 /* QuartzCore.framework in Frameworks */,
+				27972A44264CC57800ADF805 /* CoreGraphics.framework in Frameworks */,
+				27972A42264CC56E00ADF805 /* CoreImage.framework in Frameworks */,
+				27972A40264CC55900ADF805 /* AVFoundation.framework in Frameworks */,
+				27972A50264CC5BE00ADF805 /* opencv2.framework in Frameworks */,
+				27972A3B264CC54A00ADF805 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +123,7 @@
 				276DDD38264685D70003ED67 /* LCFlowImageTests */,
 				276DDD43264685D70003ED67 /* LCFlowImageUITests */,
 				276DDD1B264685D60003ED67 /* Products */,
+				27972A39264CC54A00ADF805 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +174,23 @@
 				276DDD46264685D70003ED67 /* Info.plist */,
 			);
 			path = LCFlowImageUITests;
+			sourceTree = "<group>";
+		};
+		27972A39264CC54A00ADF805 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27972A4F264CC5BD00ADF805 /* opencv2.framework */,
+				27972A4D264CC5B100ADF805 /* AssetsLibrary.framework */,
+				27972A4B264CC5A300ADF805 /* CoreMedia.framework */,
+				27972A49264CC59600ADF805 /* CoreVideo.framework */,
+				27972A47264CC58E00ADF805 /* Accelerate.framework */,
+				27972A45264CC58200ADF805 /* QuartzCore.framework */,
+				27972A43264CC57800ADF805 /* CoreGraphics.framework */,
+				27972A41264CC56E00ADF805 /* CoreImage.framework */,
+				27972A3F264CC55900ADF805 /* AVFoundation.framework */,
+				27972A3A264CC54A00ADF805 /* libc++.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +502,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2JX85QKHLZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LCFlowImage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -475,6 +527,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2JX85QKHLZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LCFlowImage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

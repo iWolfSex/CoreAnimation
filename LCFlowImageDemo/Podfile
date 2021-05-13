@@ -1,0 +1,9 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '8.1'
+
+target 'LCFlowImageDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  pod 'OpenCV', '2.4.10'
+
+
+end

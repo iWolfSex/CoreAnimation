@@ -21,6 +21,7 @@
     
     self.spriteView = [[LCFlowImage alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.spriteView];
+    
 }
 
 

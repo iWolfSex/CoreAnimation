@@ -10,9 +10,15 @@
 #import "YYKArcDrawLineView.h"
 #import "LCFlowImageView.h"
 #import "ScreenMacro.h"
+#import "UIImage+OpenCV.h"
+const int kCannyAperture = 7;
+
+
 @interface YYKDrawLineViewController (){
     CGPoint startPoint;
     CGPoint endPoint;
+    cv::VideoCapture *_videoCapture;
+    cv::Mat _lastFrame;
 }
 @property (nonatomic, strong)YYKArcDrawLineView *currentLineView;
 @property (nonatomic, strong) NSMutableArray *redoList;
@@ -45,6 +51,9 @@
     
     _pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePaintPan:)];
     [self.showLineImageView addGestureRecognizer:_pan];
+    
+    
+    
 }
 
 
@@ -131,8 +140,6 @@
     
     
 }
-
-
 //画线
 - (void)handlePaintPan:(UIPanGestureRecognizer *)gesture{
     

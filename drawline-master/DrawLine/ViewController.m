@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 #import "YYKDrawLineViewController.h"
+#import "FlowImageViewController.h"
+
+
+
 @interface ViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @end
@@ -47,10 +51,18 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:^{
-        YYKDrawLineViewController *drawLineVC = [[YYKDrawLineViewController alloc]initWithNibName:@"YYKDrawLineViewController" bundle:nil];
-        drawLineVC.showImage = image;
-        drawLineVC.modalPresentationStyle = UIModalPresentationFullScreen;
-        [self presentViewController:drawLineVC animated:YES completion:nil];
+        
+        
+        FlowImageViewController *flowImageVC = [[FlowImageViewController alloc]
+                                               init];
+        flowImageVC.showImage = image;
+        flowImageVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:flowImageVC animated:YES completion:nil];
+        
+//        YYKDrawLineViewController *drawLineVC = [[YYKDrawLineViewController alloc]initWithNibName:@"YYKDrawLineViewController" bundle:nil];
+//        drawLineVC.showImage = image;
+//        drawLineVC.modalPresentationStyle = UIModalPresentationFullScreen;
+//        [self presentViewController:drawLineVC animated:YES completion:nil];
     }];
 }
 
