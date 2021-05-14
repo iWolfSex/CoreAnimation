@@ -8,7 +8,7 @@ using namespace cv;
 
 
 static void draw_point(Mat & img, const Point2f &fp, const Scalar &color) {
-    circle(img, fp, 2, color, FILLED, LINE_AA, 0);
+    circle(img, fp, 2, color, CV_FILLED, CV_AA, 0);
 }
 
 static void draw_triangulation(Mat & img, Subdiv2D & subdiv, const Scalar &delaunay_color) {
@@ -23,9 +23,9 @@ static void draw_triangulation(Mat & img, Subdiv2D & subdiv, const Scalar &delau
         pt[2] = Point(cvRound(t[4]), cvRound(t[5]));
         // Draw rectangles completely inside the image.
         if ( rect.contains(pt[0]) && rect.contains(pt[1]) && rect.contains(pt[2])) {
-            line(img, pt[0], pt[1], delaunay_color, 1, LINE_AA, 0);
-            line(img, pt[1], pt[2], delaunay_color, 1, LINE_AA, 0);
-            line(img, pt[2], pt[0], delaunay_color, 1, LINE_AA, 0);
+            line(img, pt[0], pt[1], delaunay_color, 1, CV_AA, 0);
+            line(img, pt[1], pt[2], delaunay_color, 1, CV_AA, 0);
+            line(img, pt[2], pt[0], delaunay_color, 1, CV_AA, 0);
         }
     }
 }
