@@ -20,9 +20,20 @@ using namespace cv;
  * 返回每个三角形的顶点对应的下标
  */
 
- vector<Point2f> generatePointSet(int n, using Rect rect);
+//画出点集
+void drawPointSet(Mat& img, vector<Point2f> pointSet, Scalar color);
 
- void drawSubdiv(Mat& img, Subdiv2D& subdiv, Scalar delaunay_color);
+//标记出点
+void drawPoint(Mat& img, Point2f fp, Scalar color);
+
+////计算仿射变换
+
+Mat affineTransform(Mat& img, Subdiv2D& subdiv);
+
+//画出Voronoi图
+void paintVoronoi(Mat& img, Subdiv2D& subdiv);
+
+void drawSubdiv(Mat& img, Subdiv2D& subdiv, Scalar delaunay_color);
 
 
 #endif

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2709B43A264A8949001409A5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2709B439264A8949001409A5 /* AVFoundation.framework */; };
+		27930E1C264E0FB400193FF4 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27930E1B264E0FB400193FF4 /* opencv2.framework */; };
 		27972A2F264BB25200ADF805 /* LCFlowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27972A2B264BB25200ADF805 /* LCFlowImageView.m */; };
 		27972A55264CC63700ADF805 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A54264CC63700ADF805 /* libc++.tbd */; };
 		27972A58264CC63F00ADF805 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A57264CC63F00ADF805 /* CoreImage.framework */; };
@@ -17,7 +18,6 @@
 		27972A60264CC67000ADF805 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A5F264CC67000ADF805 /* CoreVideo.framework */; };
 		27972A62264CC67700ADF805 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A61264CC67700ADF805 /* CoreMedia.framework */; };
 		27972A64264CC67F00ADF805 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A63264CC67F00ADF805 /* AssetsLibrary.framework */; };
-		27972A66264CC68F00ADF805 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A65264CC68F00ADF805 /* opencv2.framework */; };
 		27972A7E264CF24600ADF805 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27972A7C264CF24600ADF805 /* UIImage+OpenCV.mm */; };
 		27972A95264CFF0200ADF805 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27972A94264CFF0200ADF805 /* libjpeg.a */; };
 		27972AAD264D054C00ADF805 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27972AAB264D054C00ADF805 /* Delaunay.cpp */; };
@@ -37,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		2709B439264A8949001409A5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		27930E1B264E0FB400193FF4 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		27972A03264B8FFB00ADF805 /* ScreenMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScreenMacro.h; path = ../../LCFlowImageDemo/LCFlowImageDemo/ScreenMacro.h; sourceTree = "<group>"; };
 		27972A2B264BB25200ADF805 /* LCFlowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCFlowImageView.m; sourceTree = "<group>"; };
 		27972A2E264BB25200ADF805 /* LCFlowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCFlowImageView.h; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		27972A5F264CC67000ADF805 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		27972A61264CC67700ADF805 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		27972A63264CC67F00ADF805 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		27972A65264CC68F00ADF805 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		27972A7C264CF24600ADF805 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
 		27972A7D264CF24600ADF805 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
 		27972A94264CFF0200ADF805 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
@@ -92,8 +92,8 @@
 				27972A5A264CC65200ADF805 /* CoreGraphics.framework in Frameworks */,
 				27972A58264CC63F00ADF805 /* CoreImage.framework in Frameworks */,
 				27972A55264CC63700ADF805 /* libc++.tbd in Frameworks */,
-				27972A66264CC68F00ADF805 /* opencv2.framework in Frameworks */,
 				2709B43A264A8949001409A5 /* AVFoundation.framework in Frameworks */,
+				27930E1C264E0FB400193FF4 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				27972A94264CFF0200ADF805 /* libjpeg.a */,
-				27972A65264CC68F00ADF805 /* opencv2.framework */,
+				27930E1B264E0FB400193FF4 /* opencv2.framework */,
 				27972A63264CC67F00ADF805 /* AssetsLibrary.framework */,
 				27972A61264CC67700ADF805 /* CoreMedia.framework */,
 				27972A5F264CC67000ADF805 /* CoreVideo.framework */,
@@ -130,8 +130,8 @@
 		27972AAF264D056900ADF805 /* openCV */ = {
 			isa = PBXGroup;
 			children = (
-				27972AAB264D054C00ADF805 /* Delaunay.cpp */,
 				27972AAC264D054C00ADF805 /* Delaunay.h */,
+				27972AAB264D054C00ADF805 /* Delaunay.cpp */,
 			);
 			path = openCV;
 			sourceTree = "<group>";
@@ -426,6 +426,7 @@
 		333B9FE01FB2F8D000D1A4E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2JX85QKHLZ;
@@ -454,6 +455,7 @@
 		333B9FE11FB2F8D000D1A4E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2JX85QKHLZ;
